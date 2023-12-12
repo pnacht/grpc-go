@@ -5,6 +5,7 @@
 
 version: 2
 updates:
+  # grouped updates for minor and patch version bumps
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -16,4 +17,11 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
-
+  # single-Action updates for major version bumps
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
